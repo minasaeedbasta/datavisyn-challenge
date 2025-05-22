@@ -1,0 +1,27 @@
+global:
+  domain: argocd.datavisyn.online
+configs:
+  cm:
+    oidc.config: |
+      name: GitHub
+      issuer: https://github.com
+      clientID: $github.clientID
+      clientSecret: $github.clientSecret
+      requestedScopes: ["user:email"]
+
+  rbac:
+    policy.default: role:readonly
+
+  repositories:
+    datavisyn-challenge:
+      type: git
+      url: https://github.com/minasaeedbasta/datavisyn-challenge
+      name: datavisyn-challenge
+      insecure: false
+
+server:
+  ingress:
+    enabled: true
+
+dex:
+  enabled: false
