@@ -1,7 +1,16 @@
 #!/bin/bash
 
+# Get the directory where this script is located
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+CHART_DIR="${SCRIPT_DIR}/.."
+
 # Update the Helm repositories
-helm dependency update ../
+echo "Updating Helm dependencies..."
+helm dependency update "${CHART_DIR}"
 
 # Install ArgoCD using the Helm chart
-helm install argocd ../  -f ../values.yaml -n argocd --create-namespace
+echo "Installing ArgoCD..."
+helm install argocd "${CHART_DIR}" \
+  --namespace argocd \
+  --create-namespace \
+  -f "${CHART_DIR}/values.yaml"
