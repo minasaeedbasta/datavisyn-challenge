@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: 800089106682.dkr.ecr.us-east-1.amazonaws.com/datavisyn/frontend
   tag: latest
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 service:
   type: ClusterIP
