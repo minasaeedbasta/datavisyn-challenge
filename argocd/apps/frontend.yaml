@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: datavisyn-frontend
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/minasaeedbasta/datavisyn-challenge
+    targetRevision: HEAD
+    path: helm/frontend
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: frontend
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
