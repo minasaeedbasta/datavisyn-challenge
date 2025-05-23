@@ -1,0 +1,35 @@
+global:
+  domain: argocd.datavisyn.online
+configs:
+  cm:
+    oidc.config: |
+      name: GitHub
+      issuer: https://github.com
+      clientID: "Ov23liBohobRgn6mTnbb" #$github.clientID
+      clientSecret: "ad2cc5f08d0bf59bae78c705a9167d43eb145145" #$github.clientSecret
+      requestedScopes: ["user:email"]
+
+  rbac:
+    policy.default: role:readonly
+
+  params:
+    server.insecure: true
+
+  # repositories:
+  #   datavisyn-challenge:
+  #     type: git
+  #     url: https://github.com/minasaeedbasta/datavisyn-challenge
+  #     name: datavisyn-challenge
+  #     insecure: false
+
+server:
+  ingress:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      # nginx.ingress.kubernetes.io/rewrite-target: /
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    ingressClassName: nginx
+    
+dex:
+  enabled: false
