@@ -30,5 +30,16 @@ module "eks" {
   vpc_id     = var.vpc_id
   subnet_ids = var.private_subnets
 
+  node_security_group_additional_rules = {
+    sealed_secrets_ingress = {
+      description                   = "Sealed Secrets controller access"
+      protocol                      = "tcp"
+      from_port                     = 8080
+      to_port                       = 8080
+      type                          = "ingress"
+      source_cluster_security_group = true
+    }
+  }
+
   tags = var.cluster_tags
 }
