@@ -15,3 +15,13 @@ module "eks" {
   cluster_tags    = var.cluster_tags
   private_subnets = module.vpc.private_subnets_ids
 }
+
+module "helm" {
+  source     = "./modules/helm"
+  depends_on = [module.eks]
+}
+
+module "k8s" {
+  source     = "./modules/k8s"
+  depends_on = [module.helm]
+}
