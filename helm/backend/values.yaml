@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: your-docker-registry/fastapi-backend
+  repository: 800089106682.dkr.ecr.us-east-1.amazonaws.com/datavisyn/backend
   tag: latest
   pullPolicy: IfNotPresent
 
