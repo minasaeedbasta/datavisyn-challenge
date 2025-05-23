@@ -1,0 +1,9 @@
+apiVersion: v2
+name: external-secrets
+description: A Helm chart to deploy external secrets with AWS Parameter Store
+type: application
+version: 1.0.0
+dependencies:
+  - name: external-secrets
+    version: 0.17.0
+    repository: https://charts.external-secrets.io
