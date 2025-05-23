@@ -1,0 +1,18 @@
+replicaCount: 2
+
+image:
+  repository: your-docker-registry/fastapi-backend
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  hostname: api.datavisyn.online
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+  tlsSecretName: backend-tls
