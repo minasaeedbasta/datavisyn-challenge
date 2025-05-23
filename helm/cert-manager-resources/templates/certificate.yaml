@@ -1,0 +1,13 @@
+{{- if .Values.resources.certificates }}
+{{- range .Values.resources.certificates }}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ .name }}
+  namespace: {{ .namespace | default "default" }}
+  annotations:
+    argocd.argoproj.io/sync-wave: {{ $.Values.syncWave | default "2" | quote }}
+spec:
+  {{- toYaml .spec | nindent 2 }}
+{{- end }}
+{{- end }}

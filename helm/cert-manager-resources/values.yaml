@@ -1,0 +1,16 @@
+syncWave: "2"
+
+resources:
+  clusterIssuers:
+    - name: letsencrypt-prod
+      spec:
+        acme:
+          email: mina.saeed.basta@gmail.com
+          server: https://acme-v02.api.letsencrypt.org/directory
+          privateKeySecretRef:
+            name: letsencrypt-prod-account-key
+          solvers:
+            - http01:
+                ingress:
+                  class: nginx
+
