@@ -1,0 +1,26 @@
+config:
+  existingSecret: "oauth2-secret"
+  configFile: |
+    provider = "github"
+    github_org = "mina-basta"
+    scope = "user:email read:org"
+    email-domain = "*"
+    whitelist-domain = ".datavisyn.online"
+    cookie_domains = ".datavisyn.online"
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+  hosts:
+    - host: auth.datavisyn.online
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - hosts:
+        - auth.datavisyn.online
+      secretName: oauth2-tls
