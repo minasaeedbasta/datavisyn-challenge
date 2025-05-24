@@ -1,7 +1,0 @@
-crds:
-  enabled: true
-
-aws:
-  region: us-east-1
-  serviceAccountName: external-secrets-sa
-  roleArn: arn:aws:iam::800089106682:role/external-secrets-sa
