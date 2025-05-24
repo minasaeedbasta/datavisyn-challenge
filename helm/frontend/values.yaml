@@ -17,6 +17,5 @@ ingress:
     nginx.ingress.kubernetes.io/auth-url: "https://datavisyn.online/oauth2/auth"
     nginx.ingress.kubernetes.io/auth-signin: "https://datavisyn.online/oauth2/sign_in?rd=$escaped_request_uri"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    acme.cert-manager.io/http01-edit-in-place: "true"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
   tlsSecretName: frontend-tls
