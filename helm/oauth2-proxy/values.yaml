@@ -5,13 +5,14 @@ oauth2-proxy:
       provider = "github"
       github_org = "mina-basta"
       email_domains = [ "*" ]
-      upstreams = [ "file:///dev/null" ]
+      cookie_domains = [ "datavisyn.online" ]
+      cookie_expire = "2m"
+
 
   ingress:
     enabled: true
     className: "nginx"
     annotations:
-      nginx.ingress.kubernetes.io/rewrite-target: /
       cert-manager.io/cluster-issuer: "letsencrypt-prod"
       acme.cert-manager.io/http01-edit-in-place: "true"
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
