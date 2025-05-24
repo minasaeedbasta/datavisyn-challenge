@@ -10,8 +10,14 @@ spec:
     targetRevision: HEAD
     path: helm/oauth2-proxy
     helm:
-      valuesFile: values.yaml
+      valueFiles:
+        - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: oauth2-proxy
-  syncPolicy: {}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
