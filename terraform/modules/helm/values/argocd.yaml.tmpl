@@ -2,12 +2,17 @@ global:
   domain: argocd.datavisyn.online
 configs:
   cm:
-    oidc.config: |
-      name: GitHub
-      issuer: https://github.com
-      clientID: $github.clientID
-      clientSecret: $github.clientSecret
-      requestedScopes: ["user:email"]
+    dex.config: |
+      connectors:
+        - type: github
+          id: github
+          name: GitHub
+          config:
+            clientID: ${client_id}
+            clientSecret: ${client_secret}
+            redirectURI: https://argocd.datavisyn.online/api/dex/callback
+            orgs:
+            - name: mina-basta
 
   rbac:
     policy.default: role:readonly
@@ -52,5 +57,5 @@ server:
           - grpc.argocd.datavisyn.online
         secretName:  argocd-server-grpc-tls
 
-dex:
-  enabled: false
+# dex:
+#   enabled: false

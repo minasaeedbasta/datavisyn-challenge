@@ -18,6 +18,8 @@ module "eks" {
 
 module "helm" {
   source     = "./modules/helm"
+  github_client_id     = var.github_client_id
+  github_client_secret = var.github_client_secret
   depends_on = [module.eks]
 }
 
