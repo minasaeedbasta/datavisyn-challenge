@@ -12,7 +12,7 @@ oauth2-proxy:
       github_org = "mina-basta"
       email_domains = [ "*" ]
       cookie_domains = [ "datavisyn.online" ]
-      cookie_expire = "2m"
+      cookie_expire = "24h"
 
   ingress:
     enabled: true
