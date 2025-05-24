@@ -5,8 +5,8 @@ configs:
     oidc.config: |
       name: GitHub
       issuer: https://github.com
-      clientID: "Ov23liBohobRgn6mTnbb" #$github.clientID
-      clientSecret: "ad2cc5f08d0bf59bae78c705a9167d43eb145145" #$github.clientSecret
+      clientID: $github.clientID
+      clientSecret: $github.clientSecret
       requestedScopes: ["user:email"]
 
   rbac:
@@ -27,7 +27,6 @@ server:
     enabled: true
     annotations:
       cert-manager.io/cluster-issuer: "letsencrypt-prod"
-      # nginx.ingress.kubernetes.io/rewrite-target: /
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     ingressClassName: nginx
     

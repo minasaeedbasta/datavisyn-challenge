@@ -8,5 +8,5 @@ resource "helm_release" "argocd" {
 
   values = [file("${path.module}/values/argocd.yaml")]
 
-  depends_on = [helm_release.cert_manager]
+  depends_on = [helm_release.ingress_nginx]
 }
