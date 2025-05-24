@@ -9,12 +9,3 @@ service:
   type: ClusterIP
   port: 80
 
-ingress:
-  enabled: true
-  hostname: api.datavisyn.online
-  ingressClassName: nginx
-  annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    acme.cert-manager.io/http01-edit-in-place: "true"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-  tlsSecretName: backend-tls
