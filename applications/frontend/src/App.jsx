@@ -46,7 +46,7 @@ function App() {
 
   const fetchBackendMessage = async () => {
     try {
-      const res = await fetch("https://api.datavisyn.online");
+      const res = await fetch("https://datavisyn.online/api/hello");
       const data = await res.json();
       setMessage(data.message);
     } catch (err) {
