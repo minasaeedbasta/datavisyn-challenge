@@ -1,22 +1,22 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: {{ include "backend-chart.fullname" . }}
-  labels:
-    app: {{ include "backend-chart.name" . }}
-spec:
-  replicas: {{ .Values.replicaCount }}
-  selector:
-    matchLabels:
-      app: {{ include "backend-chart.name" . }}
-  template:
-    metadata:
-      labels:
-        app: {{ include "backend-chart.name" . }}
-    spec:
-      containers:
-        - name: fastapi-backend
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - containerPort: 8000
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: {{ .Release.Name }}
+#   labels:
+#     app: {{ .Release.Name }}
+# spec:
+#   replicas: {{ .Values.replicaCount }}
+#   selector:
+#     matchLabels:
+#       app: {{ .Release.Name }}
+#   template:
+#     metadata:
+#       labels:
+#         app: {{ .Release.Name }}
+#     spec:
+#       containers:
+#         - name: fastapi-backend
+#           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+#           imagePullPolicy: {{ .Values.image.pullPolicy }}
+#           ports:
+#             - containerPort: 8000
