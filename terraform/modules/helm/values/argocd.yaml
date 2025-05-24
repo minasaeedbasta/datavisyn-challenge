@@ -27,9 +27,30 @@ server:
     enabled: true
     annotations:
       cert-manager.io/cluster-issuer: "letsencrypt-prod"
-      acme.cert-manager.io/http01-edit-in-place: "true"
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
     ingressClassName: nginx
-    
+    hostname: argocd.datavisyn.online
+    path: /
+    pathType: Prefix
+    tls:
+      - hosts:
+          - argocd.datavisyn.online
+        secretName: argocd-applicationset-controller-tls
+
+  ingressGrpc:
+    enabled: true
+    ingressClassName: "nginx"
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
+    hostname: grpc.argocd.datavisyn.online
+    path: /
+    pathType: Prefix
+    tls:
+      - hosts:
+          - grpc.argocd.datavisyn.online
+        secretName:  argocd-server-grpc-tls
+
 dex:
   enabled: false
