@@ -37,24 +37,26 @@ variable "vpc_tags" {
 
 variable "public_subnets" {
   type    = list(string)
-  default = ["10.0.0.0/24","10.0.1.0/24"]
+  default = ["10.0.0.0/24", "10.0.1.0/24"]
 }
 
 variable "private_subnets" {
   type    = list(string)
-  default = ["10.0.2.0/24","10.0.3.0/24"]
+  default = ["10.0.2.0/24", "10.0.3.0/24"]
 }
 variable "vpc_cidr" {
   type    = string
   default = "10.0.0.0/16"
 }
 
-variable "github_client_id" {
-  description = "GitHub OAuth client ID for ArgoCD"
+variable "github_client_id_ssm_path" {
+  description = "SSM Parameter Store Path for GitHub OAuth client ID for ArgoCD"
   type        = string
+  sensitive   = true
 }
 
-variable "github_client_secret" {
-  description = "GitHub OAuth client secret for ArgoCD"
+variable "github_client_secret_ssm_path" {
+  description = "SSM Parameter Store Path for GitHub OAuth client secret for ArgoCD"
   type        = string
+  sensitive   = true
 }

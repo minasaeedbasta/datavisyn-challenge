@@ -17,10 +17,10 @@ module "eks" {
 }
 
 module "helm" {
-  source     = "./modules/helm"
-  github_client_id     = var.github_client_id
-  github_client_secret = var.github_client_secret
-  depends_on = [module.eks]
+  source                        = "./modules/helm"
+  github_client_id_ssm_path     = var.github_client_id_ssm_path
+  github_client_secret_ssm_path = var.github_client_secret_ssm_path
+  depends_on                    = [module.eks]
 }
 
 module "k8s" {
