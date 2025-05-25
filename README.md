@@ -62,6 +62,11 @@ terraform/               # Infrastructure as Code for AWS/EKS
 - Handles user authentication via OAuth2 Proxy.
 - Communicates with the backend via `/api/` endpoints.
 
+**Screenshots:**
+![Frontend Screenshot 1](images/app-1.png)
+![Frontend Screenshot 2](images/app-2.png)
+![Frontend Screenshot 3](images/app-3.png)
+
 ### 2. **Backend FastAPI**
 - Python FastAPI application.
 - Provides REST API endpoints.
@@ -80,6 +85,12 @@ terraform/               # Infrastructure as Code for AWS/EKS
 ### 5. **ArgoCD**
 - Manages application deployments using GitOps.
 - Monitors GitHub repositories for changes and syncs them to the cluster.
+
+**Screenshots:**
+![ArgoCD Screenshot 1](images/argocd-1.png)
+![ArgoCD Screenshot 2](images/argocd-2.png)
+![ArgoCD Screenshot 3](images/argocd-3.png)
+![ArgoCD Screenshot 4](images/argocd-4.png)
 
 ### 6. **Cert Manager Operator**
 - Issues and renews TLS certificates for the Ingress Controller.
@@ -187,6 +198,8 @@ dig <NLB_DNS_NAME>
 Go to your GoDaddy DNS management panel and set A records for:
 - `datavisyn.online` → [NLB Public IP]
 - `argocd.datavisyn.online` → [NLB Public IP]
+
+![GoDaddy DNS Example](images/godaddy.png)
 
 Wait for DNS propagation.
 
